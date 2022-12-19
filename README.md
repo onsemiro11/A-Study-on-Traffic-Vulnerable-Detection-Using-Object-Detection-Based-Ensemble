@@ -24,3 +24,24 @@ google 이미지에서 휠체어와 목발 사진을 크롤링하여 데이터�
 
 데이터 라벨링은 roboflow.com에서 진행하였다.
 label은 1을 휠체어 0을 목발로 지정하고 라벨링했다.
+https://roboflow.com
+
+## Data Augmentation
+
+data Augmentation을 진행한 이유는 부족한 데이터의 문제점을 최대한 극복하기 위함이다. 기존에 갖고 있는 이미지 데이터에 affine 또는 Brightness , Blur 등을 적용하여 색다른 이미지를 제작함으로써 데이터를 증강했다.
+ 
+활용한 패키지는 albumentations다.
+
+## YOLO V5 model
+
+git 에서 yolo v5 을 불러온다.
+
+requirements.txt에 있는 분석에 필요한 패키지들도 모두 pip install을 통해 저장한다.
+
+### yaml 파일 제작
+
+학습할 데이터의 경로, 클래스 갯수 그리고 종류를 적어 놓는 yaml 파일을 제작해야한다.
+- train : 학습 데이터 폴더 경로
+- val : 검증 데이터 폴더 경로
+- nc : 학습할 클래스 갯수
+- names : 학습할 클래스 이름들
