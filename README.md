@@ -83,3 +83,9 @@ mAO@.5:.95는 IoU값이 0.5부터 0.95 사이인 것들의 mAP값을 말한다.
 ### Yolo V5 result
 
 ![image](https://user-images.githubusercontent.com/49609175/208351109-19f0bbd1-edec-4861-9151-8807a9c661c4.jpeg)
+
+
+
+## 프로젝트 보완점
+
+> result image에서 보았듯이 아직 detection되지 않은 객체들이 많다. 좀더 정확도를 올리기 위해, 다양한 데이터 수집과 정교한 전처리가 필요할 것같다.
