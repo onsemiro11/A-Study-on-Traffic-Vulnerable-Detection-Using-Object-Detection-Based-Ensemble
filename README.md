@@ -45,3 +45,41 @@ requirements.txt에 있는 분석에 필요한 패키지들도 모두 pip instal
 - val : 검증 데이터 폴더 경로
 - nc : 학습할 클래스 갯수
 - names : 학습할 클래스 이름들
+
+### Yolo v5 Dataset 불러오기
+이전 글에서 labeling하고 augmentation한 이미지와 좌표(txt파일)을 불러와서 각 해당 변수에 할당 시키고
+둘의 파일 개수가 동일한지 확인해봤다.
+
+### Yolo v5 train_test data 분류
+
+우선 validation과 train 데이터를 3:7로 분리해줬다.
+그 후, validation에서 5:5로 validation과 test데이터를 나눴다.
+ 
+validation을 따로 생성한 이유는,
+- 최대한 test데이터를 건들지 않고 validation데이터를 활용해서 학습한 후, test 데이터로 평가해보기 위해서다.
+
+### Yolo v5 modeling
+
+Yolo model의 원리
+- 예측할 이미지를 grid size로 나눠주고, 나눠진 이미지들의 각 confidence score들을 계산해가면서,
+기존 boundary boxes와 비슷한지와, 객체가 존재할 가능성을 convolution layer를 계속해서 통과하면서 loss값이 최소화되는 부분을 추출하는 model이다.
+ 
+모델을 돌릴때는, image size와 batch size, epochs 크기, data 경로, Configuration yaml 파일, weights를 저장할 파일, result를 저장할 곳을 지정해서 입력해준다.
+![image](https://user-images.githubusercontent.com/49609175/208351421-2697e55e-869b-4efb-bb20-b67865818310.png)
+
+위와 같은 결괏값이 나온다.
+ 
+휠체어의 precision과 recall 값이 조금 부족하다는 것을 확인 할 수 있다.
+mAP@.5는 IoU값이 0.5 이상인 것들의 mAP값을 말하는 것이고,
+mAO@.5:.95는 IoU값이 0.5부터 0.95 사이인 것들의 mAP값을 말한다.
+ 
+조금 부족한 결괏값을 보여준다.
+데이터를 다시 수집하고 증강시켜서 모델을 돌려봤다.
+
+![image](https://user-images.githubusercontent.com/49609175/208351457-5e367a5b-24c4-4b47-8da5-45ba96ba2f6b.png)
+
+
+
+### Yolo V5 result
+
+![image](https://user-images.githubusercontent.com/49609175/208351109-19f0bbd1-edec-4861-9151-8807a9c661c4.jpeg)
