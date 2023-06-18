@@ -1,0 +1,12 @@
+Data
+
+
+names:
+- crutches
+- wheelchair
+- push_wheelchair
+- person
+- walking_frame
+nc: 5
+train: /content/dataset/img/train.txt
+val: /content/dataset/img/val.txt
