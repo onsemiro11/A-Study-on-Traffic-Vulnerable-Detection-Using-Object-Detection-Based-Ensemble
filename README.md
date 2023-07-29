@@ -92,15 +92,13 @@ mAO@.5:.95는 IoU값이 0.5부터 0.95 사이인 것들의 mAP값을 말한다.
 조금 부족한 결괏값을 보여준다.
 데이터를 다시 수집하고 증강시켜서 모델을 돌려봤다.
 
-![image](https://user-images.githubusercontent.com/49609175/208351457-5e367a5b-24c4-4b47-8da5-45ba96ba2f6b.png)
-
-
+<img width="911" alt="image" src="https://github.com/onsemiro11/probono_object_detection_by_yolov5/assets/49609175/da0a0db8-1996-4c01-8fb3-4fa27bcf3a38">
 
 ### Yolo V5 result
 
 ![image](https://user-images.githubusercontent.com/49609175/208351109-19f0bbd1-edec-4861-9151-8807a9c661c4.jpeg)
 
-<img width="911" alt="image" src="https://github.com/onsemiro11/probono_object_detection_by_yolov5/assets/49609175/da0a0db8-1996-4c01-8fb3-4fa27bcf3a38">
+
 
 
 ## 프로젝트 보완점
