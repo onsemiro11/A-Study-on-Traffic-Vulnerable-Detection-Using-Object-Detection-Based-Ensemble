@@ -19,6 +19,7 @@
 휠체어와 목발 이용자들이 횡단보도를 이동하면 카메라가 인식하여, 신호등 시간을 추가시키도록 도와주자.
 
 <img width="1000" alt="image" src="https://user-images.githubusercontent.com/49609175/228584460-17cd74f6-c752-48f4-8bbd-f1fdca67dd02.png">
+<img width="753" alt="image" src="https://github.com/onsemiro11/probono_object_detection_by_yolov5/assets/49609175/2c9ddd45-2a92-4022-9b3b-e80d08ada94f">
 
 
 ## 프로젝트 계획
