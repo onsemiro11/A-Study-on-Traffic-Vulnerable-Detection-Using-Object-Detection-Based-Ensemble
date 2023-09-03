@@ -18,22 +18,23 @@
 
 휠체어와 목발 이용자들이 횡단보도를 이동하면 카메라가 인식하여, 신호등 시간을 추가시키도록 도와주자.
 
-<img width="1000" alt="image" src="https://user-images.githubusercontent.com/49609175/228584460-17cd74f6-c752-48f4-8bbd-f1fdca67dd02.png">
 <img width="1000" alt="image" src="https://github.com/onsemiro11/probono_object_detection_by_yolov5/assets/49609175/2c9ddd45-2a92-4022-9b3b-e80d08ada94f">
 
 
 ## 프로젝트 계획
 
-1. 휠체어와 목발 데이터를 google에서 크롤링한다.
-2. 이미지 데이터에 인식할 물체에 라벨링 작업을 진행하였다.
-3. 크롤링한 데이터로 부족할 것이 분명하니, agumentation을 진행한다.
-4. yolo v5 모델에 데이터를 넣어 결과를 확인해 본다.
-5. 결과값이 아쉽다면, 데이터를 다시 정제하거나, 모델 파라미터를 바꾼 후 진행해본다.(반복)
-6. 실제 유튜브 영상에서도 잘 인식하는지, 그리고 webcam에서도 인식을 잘하는 지 확인해본다.
+1. 휠체어와 목발 데이터 크롤링 or 수집
+2. 이미지 데이터에 인식할 물체에 라벨링 작업을 진행
+3. agumentation을 진행
+4. yolo v5 단일 모델 Test
+5. 결과값이 아쉽다면 NMS나 WBF 앙상블 진행
+6. 실제 유튜브 영상에서도 잘 인식하는지, 그리고 webcam에서도 인식을 잘하는 지 확인하고 비교 진행
+7. Benchmark 모델로는 RetinaNet 모델 활용
 
-## DATA Crawling
+## DATA Crawling & 수집
 
 google 이미지에서 휠체어와 목발 사진을 크롤링하여 데이터를 수집하였다.
+roboflow와 Mobility Aids 데이터를 추가로 수집
 크롤링에는 selenium 을 활용하여 진행했다.
 
 ## DATA Labeling
@@ -42,15 +43,17 @@ google 이미지에서 휠체어와 목발 사진을 크롤링하여 데이터�
 label은 1을 휠체어 0을 목발로 지정하고 라벨링했다.
 https://roboflow.com
 
+수집된 데이터는 총 3,543장의 이미지 데이터셋을 구축하였다. 각 객체별 비율은 목발이용자 33.3%, 휠체어 이용자 33.2% 그리고 보행자 33.5%로 구성하여 데이터를 구축하였다.
+
 ## Data Augmentation
 
 data Augmentation을 진행한 이유는 부족한 데이터의 문제점을 최대한 극복하기 위함이다. 기존에 갖고 있는 이미지 데이터에 affine 또는 Brightness , Blur 등을 적용하여 색다른 이미지를 제작함으로써 데이터를 증강했다.
  
-활용한 패키지는 albumentations다.
+기존 수집된 3,543장의 이미지 데이터 셋에서 Albumentations 패키지를 활용하여 최종 6,017장의 이미지 데이터를 확보했다. 
 
 ## YOLO V5 model
 
-git 에서 yolo v5 을 불러온다.
+git 에서 yolo v5 을 clone한다.
 
 requirements.txt에 있는 분석에 필요한 패키지들도 모두 pip install을 통해 저장한다.
 
@@ -81,26 +84,17 @@ Yolo model의 원리
 기존 boundary boxes와 비슷한지와, 객체가 존재할 가능성을 convolution layer를 계속해서 통과하면서 loss값이 최소화되는 부분을 추출하는 model이다.
  
 모델을 돌릴때는, image size와 batch size, epochs 크기, data 경로, Configuration yaml 파일, weights를 저장할 파일, result를 저장할 곳을 지정해서 입력해준다.
-![image](https://user-images.githubusercontent.com/49609175/208351421-2697e55e-869b-4efb-bb20-b67865818310.png)
-
-위와 같은 결괏값이 나온다.
- 
-휠체어의 precision과 recall 값이 조금 부족하다는 것을 확인 할 수 있다.
-mAP@.5는 IoU값이 0.5 이상인 것들의 mAP값을 말하는 것이고,
-mAO@.5:.95는 IoU값이 0.5부터 0.95 사이인 것들의 mAP값을 말한다.
- 
-조금 부족한 결괏값을 보여준다.
-데이터를 다시 수집하고 증강시켜서 모델을 돌려봤다.
 
 <img width="911" alt="image" src="https://github.com/onsemiro11/probono_object_detection_by_yolov5/assets/49609175/da0a0db8-1996-4c01-8fb3-4fa27bcf3a38">
 
 ### Yolo V5 result
 
-![image](https://user-images.githubusercontent.com/49609175/208351109-19f0bbd1-edec-4861-9151-8807a9c661c4.jpeg)
+<img width="1000" alt="image" src="https://github.com/onsemiro11/A-Study-on-Traffic-Vulnerable-Detection-Using-Object-Detection-Based-Esemble/assets/49609175/24601cfe-a22c-428d-98d7-4f39be097efd">
 
 
 
+## Conclusions
 
-## 프로젝트 보완점
+> 본 논문에서는 다양한 환경 속 보행자, 휠체어 사용자 그리고 목발 이용자 이미지 데이터를 사용하면서, 횡단보도속 역동적인 환경의 변화에서 검출할 수 있도록 했다. 부족한 데이터를 해결하기 위해 증강 기법을 활용하였다. 또한 모델 YOLO v5 속 모델들을 앙상블 기법 중 NMS와 WBF를 활용하여, 단일 모델의 과적합 문제를 해결하고 안정성을 갖춘 모델을 구축하였다. 실제 횡단보도 환경 속 영상에서 단일 모델과 앙상블한 모델을 비교한 결과, 단일 모델보다 앙상블된 모델이 우수한 성능을 보여줬다는 것을 확인하였다. 연산량이 비교적 적은 모델들인 s와 n을 선택하여 과적합을 최소화하려 하였고, 더 높은 안정성을 추구하기 위해 앙상블 기법을 활용하였다. 그 결과, 단일 모델에서 감지하지 못하거나 오탐지된 객체들을 올바르게 탐지하는 모습을 보여줬다.
 
-> result image에서 보았듯이 아직 detection되지 않은 객체들이 많다. 좀더 정확도를 올리기 위해, 다양한 데이터 수집과 정교한 전처리가 필요할 것같다.
+> 본 연구는 서비스를 제공하는 횡단보도 환경의 cctv 각도에서 바라보는 데이터를 구축하지 못하였다. 부족한 데이터를 활용하여 아쉬운 성능을 보여줄 가능성이 존재한다. 하지만, 본 연구는 충분히 휠체어 사용자와 목발 이용자를 탐지하여 자동화된 스마트 신호등을 구현하는데 활용할 수 있다는 것을 보여준다. 적합한 데이터를 구축하고 높은 연산량을 가진 모델을 활용하여, 좀 더 우수한 성능을 갖춘 모델을 개발하는 연구가 필요하다. 해당 연구가 지속되면 향후 보다 높은 성능과 안정성을 보여줄 수 있을 것으로 기대된다. 나아가, 기존 연구인 [5]과 [6]의 실험 결과와 함께 교통약자에 적합한 보행 제한 시간을 적용하여 자동으로 변동 시간을 제공하는 신호등 개발에 기여할 수 있다.
