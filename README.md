@@ -10,7 +10,7 @@
 <table>
 
 
-# YOLOv5_weak-pedestrian_detection
+# A Study on Traffic Vulnerable Detection Using Object Detection-Based Esemble
 
 종종 긴 횡단보도나 교차로를 신호등 시간 내에 이동하지 못하시거나, 이동하시는데 위험한 상황을 격으시는 교통약자분들을 본 적이 있었다. 이런 경험을 없애고 교통약자분들도 안전한 야외활동을 할 수 있도록 도와주자는 생각으로 이번 프로젝트를 진행하였다. 처음 시작할 때의 목표는 대표적인 교통약자분들을 모두 인식하여 도움을 주자는 생각을 하였지만, 부족한 데이터로 인해 낮은 정확도를 보일 바에는 우선 많은 데이터를 가져올 수 있는 label만 가지고 모델을 구성해보자는 목표를 변경하여 진행했다.
 
