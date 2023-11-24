@@ -7,19 +7,6 @@ from tqdm import   tqdm
 from glob import glob
 from PIL import Image
 
-#yolo 모델에 맞는 좌표로 되어 있는 좌표 데이터들을 잠시 augmentation하기 위해 x,y좌표로 변환해주는 함수
-def yolo_to_xml_bbox(bbox, image): 
-    # x_center, y_center width, heigth
-    h, w, c = image.shape
-    w_half_len = (bbox[0][2] * w) / 2
-    h_half_len = (bbox[0][3] * h) / 2
-    xmin = int((bbox[0][0] * w) - w_half_len)
-    ymin = int((bbox[0][1] * h) - h_half_len)
-    xmax = int((bbox[0][0] * w) + w_half_len)
-    ymax = int((bbox[0][1] * h) + h_half_len)
-    im_class = int(int(bbox[0][-1]))
-    return [(xmin, ymin, xmax, ymax, im_class)]
-
 
 def setting_yolo_order(list_):
     a, b, c, d,e = list_
