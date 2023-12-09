@@ -81,10 +81,14 @@ This is our Pre-augmented DataSet Link
 
 > Roboflow Link :
 
-### data augmentation
+### Data augmentation
+
+3543 images -> 6017 images
+
+augmentation : Brightness, flip left and right, and rotate within 30 degrees.
 
 ```shell
-   python3 augmentation.py --l_folder <label_txt_folder> --im_format .png
+   python3 augmentation.py
 ```
 
 ### Drawing boxes on a data image
