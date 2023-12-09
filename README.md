@@ -68,10 +68,10 @@ A-Study-on-Traffic-Vulnerable-Detection-Using-Object-Detection-Based-Esemble
 
 ## Data
 
-- Google Crawling :
-```shell
-   python3 crawling.py
-```
+- Google Crawling
+  ```shell
+     python3 crawling.py
+  ```
 - Mobibity Aids : http://mobility-aids.informatik.uni-freiburg.de/
 - Roboflow
 
