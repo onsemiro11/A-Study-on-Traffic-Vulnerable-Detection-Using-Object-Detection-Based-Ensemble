@@ -81,6 +81,12 @@ This is our Pre-augmented DataSet Link
 
 > Roboflow Link :
 
+### data augmentation
+
+```shell
+   python3 augmentation.py --l_folder <label_txt_folder> --im_format .png
+```
+
 ### Drawing boxes on a data image
 
 - Converting Voc format to yolo format.
