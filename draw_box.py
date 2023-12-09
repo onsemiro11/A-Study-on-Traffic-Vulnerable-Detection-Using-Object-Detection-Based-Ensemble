@@ -62,6 +62,7 @@ if __name__ == "__main__":
     txt_path = f'data/labels/{os.path.basename(image_path)[:-4]}.txt'
 
     class_name = {0:'crutches',1:'wheelchair',2:'pedestrian'}
+    #if you wanna diffrent color of each box, use this color dic.
     # color = {'crutches':(235,75,66),
     #         'pedestrian':(236,120,55),
     #         'wheelchair':(238,160,145)}
@@ -76,7 +77,7 @@ if __name__ == "__main__":
             x_center, y_center, width, height = float(line[1]), float(line[2]), float(line[3]), float(line[4])
             xmin, xmax, ymin, ymax = yolo_to_xml_bbox([x_center, y_center, width, height], image)
             print(xmin, xmax, ymin, ymax)
-            image = plot_box(image, {'x':xmin, 'y':ymin}, {'x':xmax, 'y':ymax}, width, height, class_name[int(class_index)],color =(255,228,30))
+            image = plot_box(image, {'x':xmin, 'y':ymin}, {'x':xmax, 'y':ymax}, width, height, class_name[int(class_index)],color =(255,228,30)) #chage color = color
     plt.figure(figsize=(10, 10))
     plt.imshow(image)
     plt.show()

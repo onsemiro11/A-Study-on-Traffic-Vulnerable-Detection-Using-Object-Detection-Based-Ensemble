@@ -1,5 +1,5 @@
-train: ../train/images
-val: ../valid/images
+train: .data/train/images
+val: .data/valid/images
 
 nc: 3
 names: ['crutches', 'wheelchair', 'pedestrian']
