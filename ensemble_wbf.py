@@ -74,3 +74,30 @@ for image_id in tqdm(image_ids, total=len(image_ids)):
         bbox = x1y1x2y22xywh(row)
         out_file.write(str(int(labels[i])) + ' ' +" ".join(str(x) for x in bbox) + " " + str(round(scores[i],6)) + '\n')
     out_file.close()
+
+# from ensemble_boxes import *
+# for image_id in tqdm(df['image_id'], leave=False):
+#         image_df = df[df['image_id']==image_id].reset_index(drop=True)
+#         h, w = image_df.loc[0, ['height', 'width']].values
+#         boxes = image_df[['x_min', 'y_min',
+#                           'x_max', 'y_max']].values.tolist()
+#         # Normalise all the bounding boxes (by dividing them  by size-1
+#         boxes = [[j/(size-1) for j in i] for i in boxes]
+#         scores = [1.0]*len(boxes) # set all of the scores to 1 since we only have 1 model here
+#         labels = [float(i) for i in image_df['class_id'].values]
+#         boxes, scores, labels = weighted_boxes_fusion([boxes], [scores], [labels],weights=None,iou_thr=iou_thr,
+#                                           skip_box_thr=skip_box_thr)
+#         list_image.extend([image_id]*len(boxes))
+#         list_h.extend([h]*len(boxes))
+#         list_w.extend([w]*len(boxes))
+#         list_boxes.extend(boxes)
+#         list_cls.extend(labels.tolist())
+#     # bring the bounding boxes back to their original size  (by multiplying by size - 1)
+#     list_boxes = [[int(j*(size-1)) for j in i] for i in list_boxes]
+#     new_df['image_id'] = list_image
+#     new_df['class_id'] = list_cls
+#     new_df['h'] = list_h
+#     new_df['w'] = list_w
+#     # Unpack the coordinates from the  bounding boxes
+#     new_df['x_min'], new_df['y_min'], \
+#     new_df['x_max'], new_df['y_max'] = np.transpose(list_boxes)
