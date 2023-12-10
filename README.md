@@ -95,7 +95,7 @@ augmentation : Brightness, flip left and right, and rotate within 30 degrees.
 
 - Converting Voc format to yolo format.
 ```shell
-   python3 voc2yolo.py --l_folder <label_txt_folder> --im_format .png
+   python3 yolo2voc.py --l_folder <label_txt_folder> --im_format .png
 ```
 - Drawing
 ```shell
