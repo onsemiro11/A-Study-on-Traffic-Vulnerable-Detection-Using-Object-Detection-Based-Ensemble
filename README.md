@@ -10,7 +10,7 @@
 <table>
 
 
-# A Study on Traffic Vulnerable Detection Using Object Detection-Based Esemble
+# A Study on Traffic Vulnerable Detection Using Object Detection-Based Ensemble
 
 Despite ongoing attempts to address pedestrian accidents at crosswalks, they continue to occur. In particular, the elderly, the disabled, and other vulnerable groups are at greater risk of being involved in traffic accidents. It is necessary to look at the problem carefully. This paper proposes an object detection technology using the YOLO v5 model for pedestrians using assistive devices such as wheelchairs and crutches. Image crawling, Roboflow and Mobility Aids data of wheelchair and crutch users and pedestrians were collected. Data augmentation techniques were used to improve the generalization performance. In addition, ensemble techniques were used to reduce type 2 errors, resulting in a high performance figure of 96% recall. This proves that ensembling a single model in YOLO to target the transportation disadvantaged can provide accurate detection performance without missing objects.
 
