@@ -1,4 +1,4 @@
-## :runner:팀원
+## :runner:Team members
 
 <table>
   <tr>
@@ -16,7 +16,7 @@ Despite ongoing attempts to address pedestrian accidents at crosswalks, they con
 
 ## Paper
 
-soon....
+[A Study on Traffic Vulnerable Detection Using Object Detection-Based Esemble](http://www.ibookkorea.net/Viewer/KSCI_29_01) - JKSCI Vol.29 No.1 pp. 61-68 January 2024
 
 ## Project Work Flow
 
